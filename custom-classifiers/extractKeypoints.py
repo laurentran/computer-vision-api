@@ -1,4 +1,4 @@
-import cv2
+#import cv2
 import numpy as np
 from skimage import data, feature
 from sklearn import cluster
@@ -6,13 +6,12 @@ import matplotlib.pyplot as plt
 import csv
 import os
 
-ofile  = open('test-keypoints.csv', "wb")
+ofile  = open('daisy_keypoints.csv', "wb")
 writer = csv.writer(ofile, delimiter=',')
 imageIdx = 0
 
-imageLocations = ['test_images/']
-#classIdx = 1
-classIdx = 2 #temporary -- change back to 1
+imageLocations = ['starbucks/']
+classIdx = 1
 
 for location in imageLocations:
     for image in os.listdir(location):
@@ -24,12 +23,12 @@ for location in imageLocations:
 
             descs, descs_img = feature.daisy(img, step=30, radius=10, rings=2, histograms=6, orientations=8, visualize=True)
 
-            # fig, ax = plt.subplots()
-            # ax.axis('off')
-            # ax.imshow(descs_img)
-            # descs_num = descs.shape[0] * descs.shape[1]
-            # ax.set_title('%i DAISY descriptors extracted:' % descs_num)
-            # plt.show()
+            fig, ax = plt.subplots()
+            ax.axis('off')
+            ax.imshow(descs_img)
+            descs_num = descs.shape[0] * descs.shape[1]
+            ax.set_title('%i DAISY descriptors extracted:' % descs_num)
+            plt.show()
 
             print descs.shape
 

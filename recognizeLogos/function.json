@@ -1,0 +1,19 @@
+{
+  "bindings": [
+    {
+      "name": "myBlob",
+      "type": "blobTrigger",
+      "direction": "in",
+      "path": "images/{name}/{slice}",
+      "connection": "AzureWebJobsDashboard"
+    },
+    {
+      "type": "table",
+      "name": "outputTable",
+      "tableName": "logoTags",
+      "connection": "AzureWebJobsDashboard",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}
